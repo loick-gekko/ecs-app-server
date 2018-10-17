@@ -49,7 +49,9 @@ app.use(function (err, req, res, next) {
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 var server = http.createServer(app);
-server.listen(port);
+server.listen(port,()=>{
+  console.log('process.env:',process.env);
+});
 server.on('error', onError);
 server.on('listening', onListening);
 function normalizePort(val) {

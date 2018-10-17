@@ -5,6 +5,7 @@ const keyName = process.env.KEY
 /* GET home page. */
 router.get('/', function (req, res) {
   res.json({ success: true, data: 'data' });
+  console.log('p.env',process.env)
 });
 /*
 router.get('/:Backet', (req, res) => {
@@ -30,6 +31,7 @@ bucketPromise.then(
 
   })*/
 router.get('/listAllBucket',(req,res)=>{
+  console.log('p.env',process.env.USER)
 res.json({success:true})
 })
 router.post('/sendFile',(req,res)=>{

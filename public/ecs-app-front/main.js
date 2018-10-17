@@ -300,6 +300,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListComponent", function() { return ListComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -311,9 +312,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var ListComponent = /** @class */ (function () {
     function ListComponent(http) {
         this.http = http;
+        this.url = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].url;
     }
     ListComponent.prototype.ngOnInit = function () {
     };
@@ -336,7 +339,7 @@ var ListComponent = /** @class */ (function () {
                 'Content-Type': 'application/json',
             })
         };
-        return this.http.get('http://localhost:3000/listAllBucket', options)
+        return this.http.get(this.url + '/listAllBucket', options)
             .subscribe(function (result) {
             console.log('result', result);
         });
@@ -390,6 +393,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UploadComponent", function() { return UploadComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../environments/environment */ "./src/environments/environment.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -401,9 +405,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var UploadComponent = /** @class */ (function () {
     function UploadComponent(http) {
         this.http = http;
+        this.url = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].url;
     }
     UploadComponent.prototype.ngOnInit = function () {
     };
@@ -417,7 +423,7 @@ var UploadComponent = /** @class */ (function () {
                 'Content-Type': 'application/json',
             })
         };
-        var example = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpRequest"]('POST', 'http://localhost:3000/sendFile/', this.file, {
+        var example = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpRequest"]('POST', this.url + '/sendFile/', this.file, {
             reportProgress: true
         });
         return this.http.request(example).subscribe(function (result) {
@@ -453,7 +459,8 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 var environment = {
-    production: false
+    production: false,
+    url: 'http://localhost:3000'
 };
 /*
  * For easier debugging in development mode, you can import the following file
