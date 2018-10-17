@@ -2,7 +2,7 @@ FROM node:8
 
 WORKDIR /src
 
-COPY ./node-app /src 
+COPY . /src 
 
 
 
