@@ -6,7 +6,7 @@ var logger = require('morgan');
 var debug = require('debug')('ecs-app-server:server');
 var http = require('http');
 const cors = require('cors');
-
+   // NODE_TLS_REJECT_UNAUTHORIZED=0
 // import entire SDK
 const AWS = require('aws-sdk');
 
