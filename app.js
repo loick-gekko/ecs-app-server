@@ -6,14 +6,14 @@ var logger = require('morgan');
 var debug = require('debug')('ecs-app-server:server');
 var http = require('http');
 const cors = require('cors');
-   // NODE_TLS_REJECT_UNAUTHORIZED=0
+   NODE_TLS_REJECT_UNAUTHORIZED = 0
 // import entire SDK
 const AWS = require('aws-sdk');
 
 
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+
 
 var app = express();
 
@@ -27,9 +27,22 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public/ecs-app-front')));
+/**
+ * app.enable('trust proxy');
+app.use (function (req, res, next) {
+       if (req.secure) {
+               // request was via https, so do no special handling
+               next();
+       } else {
+               // request was via http, so redirect to https
+               res.redirect('https://' + req.headers.host + req.url);
+       }
+});
+ */
+// enforce https
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
