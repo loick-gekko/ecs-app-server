@@ -31,7 +31,7 @@ module.exports = (req, res) => {
             Key: "file1name",
             LastModified: "dsfsdfdsf",
             Size: 46,
-            copied: 'success'
+            
         },
         {
             Etag: "dfqsf",
@@ -39,11 +39,15 @@ module.exports = (req, res) => {
             LastModified: "dsfsdfdsf",
             LastModified: "dsfsdfdsf",
             Size: 44,
-            copied: 'faild'
+        
         }]
     };
-    console.log(req.body)
+    console.log('syncALL :',req.body)
     setTimeout(() => {
-        res.json({ success: true, data: data.Contents, message: 'data  after sync' })
-    }, 4000)
+        let obj= data.Contents[0];
+        obj.copied=  'success';
+        res.json({ success: true, data: obj, message: 'data  after sync' })
+    }, 2000)
+
+   
 }

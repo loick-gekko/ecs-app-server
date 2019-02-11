@@ -16,8 +16,8 @@ router.post('/ListAllBucketSourceObjects',listObjectes );
 
 router.post('/ListBucketDestinationObject',listObjectBucketDestination );
 
-router.post('/sync', );
+router.post('/sync',synchronize );
 
 
-router.post('/syncALL', );
+router.post('/syncALL',synchronizeAll );
 module.exports = router;
